@@ -231,6 +231,7 @@ void manager_t::Session(void) {
             isErr = true;
             break;
           }
+          c++;
           break;
       }
       i++;
@@ -239,7 +240,11 @@ void manager_t::Session(void) {
         break;
     }
 
-    if (isErr) {
+    while (c != line.end())
+      if (!isspace(*c))
+        break;
+
+    if (isErr || c != line.end()) {
       std::cout << "Error command format" << std::endl;
       continue;
     }
