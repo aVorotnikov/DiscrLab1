@@ -9,8 +9,8 @@ set_t::set_list_t::set_list_t(set_list_t *nextEl, const char el[]) : next(nextEl
   do {
     str[i] = el[i];
     i++;
-  } while (el[i] != 0 && i < def::maxStrLen);
-  if (i == def::maxStrLen)
+  } while (el[i] != 0 && i < def::maxCharSeq);
+  if (i == def::maxCharSeq)
     throw std::exception("String is more than 80 symbols");
 }
 
@@ -278,7 +278,7 @@ bool set_t::IsSubset(const set_t &s) const {
 }
 
 std::ostream & operator<<(std::ostream &oStream, const set_t::set_list_t &el) {
-  oStream << '\t' << el.str << std::endl;
+  oStream << "\t\"" << el.str << "\"" << std::endl;
   return oStream;
 }
 
